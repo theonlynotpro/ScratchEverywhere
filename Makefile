@@ -20,6 +20,8 @@ else ifeq ($(PLATFORM),wasm)
 include make/Makefile_wasm
 else ifeq ($(PLATFORM),nds)
 include make/Makefile_nds
+else ifeq ($(PLATFORM), pm)
+include make/Makefile_pm
 else
     $(error Unknown platform: $(PLATFORM))
 endif
