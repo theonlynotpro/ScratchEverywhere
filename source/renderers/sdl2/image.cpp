@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <unzip.hpp>
 #include <vector>
+#include <SDL2/SDL.h>
 
 std::unordered_map<std::string, SDL_Image *> images;
 static std::vector<std::string> toDelete;
