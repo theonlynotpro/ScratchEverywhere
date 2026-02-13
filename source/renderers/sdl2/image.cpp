@@ -113,9 +113,12 @@ void Image::renderNineslice(double xPos, double yPos, double width, double heigh
     image->freeTimer = image->maxFreeTime;
 
     SDL_Texture *originalTexture = image->spriteTexture;
-    SDL_ScaleMode originalScaleMode;
-    SDL_GetTextureScaleMode(originalTexture, &originalScaleMode);
-    SDL_SetTextureScaleMode(originalTexture, SDL_ScaleModeNearest);
+
+    #if SDL_VERSION_ATLEAST(2,0,12)
+        SDL_ScaleMode originalScaleMode;
+        SDL_GetTextureScaleMode(originalTexture, &originalScaleMode);
+        SDL_SetTextureScaleMode(originalTexture, SDL_ScaleModeNearest);
+    #endif
 
     SDL_RenderCopy(renderer, originalTexture, &srcTopLeft, &dstTopLeft);
     SDL_RenderCopy(renderer, originalTexture, &srcTop, &dstTop);
@@ -127,7 +130,10 @@ void Image::renderNineslice(double xPos, double yPos, double width, double heigh
     SDL_RenderCopy(renderer, originalTexture, &srcBottom, &dstBottom);
     SDL_RenderCopy(renderer, originalTexture, &srcBottomRight, &dstBottomRight);
 
-    SDL_SetTextureScaleMode(originalTexture, originalScaleMode);
+    #if SDL_VERSION_ATLEAST(2,0,12)
+        SDL_SetTextureScaleMode(originalTexture, originalScaleMode);
+    #endif
+
 }
 
 /**

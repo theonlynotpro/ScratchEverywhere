@@ -26,7 +26,7 @@ CXXFLAGS_RELEASE := $(CXXFLAGS_BASE) -O2 -DNDEBUG
 CFLAGS_DEBUG     := $(CFLAGS_BASE) -g -O0 -DDEBUG
 CFLAGS_RELEASE   := $(CFLAGS_BASE) -O2 -DNDEBUG
 
-LDFLAGS := $(SDL_LIBS) -lpthread -ldl
+LDFLAGS := $(SDL_LIBS) -lpthread -ldl -lSDL2_gfx
 
 # Find all .cpp and .c files recursively
 SRC_CPP := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.cpp))
