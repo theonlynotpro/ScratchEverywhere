@@ -24,7 +24,10 @@ CXXFLAGS_RELEASE := $(CXXFLAGS_BASE) -O2 -DNDEBUG
 CFLAGS_DEBUG   := $(CFLAGS_BASE) -g -O0 -DDEBUG
 CFLAGS_RELEASE := $(CFLAGS_BASE) -O2 -DNDEBUG
 
-LDFLAGS := -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lpthread -ldl -lSDL2_gfx
+LDFLAGS := $(SDL_LIBS) -lpthread -ldl
+
+SDL_CFLAGS  := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf SDL2_mixer SDL2_gfx)
+SDL_LIBS    := $(shell pkg-config --libs sdl2 SDL2_image SDL2_ttf SDL2_mixer SDL2_gfx)
 
 
 # Find all .cpp and .c files recursively
