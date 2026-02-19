@@ -118,8 +118,8 @@ bool Render::Init() {
         windowHeight = mode.h;
     }
 #else
-    int windowWidth = 540;
-    int windowHeight = 405;
+    int windowWidth = 640;
+    int windowHeight = 480;
 #endif
 
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
@@ -137,10 +137,15 @@ bool Render::Init() {
     uint32_t sdlFlags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
 #endif
     renderer = SDL_CreateRenderer((SDL_Window *)globalWindow->getHandle(), -1, sdlFlags);
+
+    
     if (renderer == NULL) {
         Log::logError("Could not create renderer: " + std::string(SDL_GetError()));
         return false;
     }
+
+    SDL_RenderSetLogicalSize(renderer, 480, 360);
+    SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
 
     speechManager = new SpeechManagerSDL2(renderer);
 

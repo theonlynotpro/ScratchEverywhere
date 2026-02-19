@@ -16,8 +16,8 @@ SDL_CFLAGS := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf SDL2_mixer)
 SDL_LIBS   := $(shell pkg-config --libs sdl2 SDL2_image SDL2_ttf SDL2_mixer)
 
 # Base compiler flags
-CXXFLAGS_BASE := -std=c++17 -Wall -D__PC__ -fexceptions -I/usr/local/include -I/usr/local/include/SDL2
-CFLAGS_BASE   := -D__PC__
+CXXFLAGS_BASE := -std=c++17 -Wall -D__PC__ -D__PM__ -fexceptions -I/usr/local/include -I/usr/local/include/SDL2
+CFLAGS_BASE   := -D__PC__  -D__PM__
 
 # Debug and Release flags
 CXXFLAGS_DEBUG   := $(CXXFLAGS_BASE) -g -O0 -DDEBUG
