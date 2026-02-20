@@ -1,4 +1,4 @@
-PLATFORM ?= 3ds
+PLATFORM ?= pm
 
 ifeq ($(PLATFORM),3ds)
 include make/Makefile_3ds

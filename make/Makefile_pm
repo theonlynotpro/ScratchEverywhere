@@ -11,13 +11,34 @@ CC         := gcc
 GRAPHICS   := gfx
 GFXBUILD   := romfs/gfx
 
+ENABLE_AUDIO		?=	1
+ENABLE_LOADSCREEN	?=	1
+ENABLE_MENU		?=	1
+
+$(info ENABLE_MENU=$(ENABLE_MENU))
+$(info ENABLE_LOADSCREEN=$(ENABLE_LOADSCREEN))
+$(info ENABLE_AUDIO=$(ENABLE_AUDIO))
+
 # SDL via pkg-config
 SDL_CFLAGS := $(shell pkg-config --cflags sdl2 SDL2_image SDL2_ttf SDL2_mixer)
 SDL_LIBS   := $(shell pkg-config --libs sdl2 SDL2_image SDL2_ttf SDL2_mixer)
 
 # Base compiler flags
 CXXFLAGS_BASE := -std=c++17 -Wall -D__PC__ -D__PM__ -fexceptions -I/usr/local/include -I/usr/local/include/SDL2
-CFLAGS_BASE   := -D__PC__  -D__PM__
+CFLAGS_BASE   := -D__PC__  -D__PM__ -DPLATFORM_HAS_KEYBOARD
+
+ifeq ($(ENABLE_MENU),1)
+SOURCES += source/scratch/menus
+INCLUDES += source/scratch/menus
+CFLAGS_BASE	+=	-DENABLE_MENU
+else
+ENABLE_LOADSCREEN = 0
+endif
+
+ifeq ($(ENABLE_LOADSCREEN),1)
+CFLAGS_BASE	+=	-DENABLE_LOADSCREEN
+endif
+
 
 # Debug and Release flags
 CXXFLAGS_DEBUG   := $(CXXFLAGS_BASE) -g -O0 -DDEBUG
