@@ -1,0 +1,38 @@
+{
+    "version": 4,
+    "name": "ScratchEverywhere.zip",
+    "items": [
+        "ScratchEverywhere.sh",
+        "ScratchEverywhere"
+    ],
+    "items_opt": null,
+    "attr": {
+        "title": "ScratchEverywhere",
+        "porter": [
+            "theonlynotpro"
+        ],
+        "desc": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
+        "desc_md": null,
+        "inst": "Copy the contents of your Steam or GOG installation to ports/undertale/assets.",
+        "inst_md": null,
+        "genres": [
+            "rpg"
+        ],
+        "image": {},
+        "rtr": false,
+        "exp": false,
+        "runtime": [],
+        "store": [
+            {
+                "name": "Steam",
+                "url": "https://store.steampowered.com/app/391540/Undertale/"
+            }
+        ],
+        "availability": "free",
+        "reqs": [],
+        "arch": [
+            "aarch64"
+        ],
+        "min_glibc": ""
+    }
+}
